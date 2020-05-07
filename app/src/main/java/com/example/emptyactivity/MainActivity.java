@@ -14,4 +14,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public void choice1Pressed(View view) {
+        TextView textView = findViewById(R.id.text);
+        textView.setText("Close, but no cigar!");
+    }
+
+    public void choice2Pressed(View view) {
+        TextView textView = findViewById(R.id.text);
+        textView.setText("Duh..");
+    }
+
+    public void choice3Pressed(View view) {
+        TextView textView = findViewById(R.id.text);
+        textView.setText("Python? HA!");
+    }
 }
