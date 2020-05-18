@@ -1,4 +1,4 @@
-package com.example.comp6442;
+package com.example.comp2100_6442;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.comp6442;
+package com.example.comp2100_6442;
 
 import androidx.appcompat.app.AppCompatActivity;
 
