@@ -2,8 +2,10 @@ package com.example.comp2100_6442;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class Surveylist extends AppCompatActivity {
@@ -19,5 +21,12 @@ public class Surveylist extends AppCompatActivity {
 
         TextView display = (TextView) findViewById(R.id.successView);
         display.setText(show);
+    }
+    public void NextPressed(View view) {
+        Intent intent = new Intent(getApplicationContext(), Login.class);
+        startActivity(intent);
+
+        SharedPreferences preferences = getSharedPreferences("PREFS", MODE_PRIVATE);
+        preferences.edit().clear().commit();
     }
 }
