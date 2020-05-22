@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateSurvey"></activity>
+        <activity android:name=".Subjective_Survey"></activity>
+        <activity android:name=".CreateSurvey" />
         <activity android:name=".Surveylist" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />
