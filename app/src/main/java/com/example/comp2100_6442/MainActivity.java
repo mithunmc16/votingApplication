@@ -15,26 +15,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.setTitle("COMP2100 Voting App");
-
-        ImageView myImageView = (ImageView) findViewById(R.id.imageView3);
-        myImageView.setImageResource(R.drawable.logo);
     }
 
-    public void guestPressed(View view) {
-        Intent intent = new Intent(getApplicationContext(), Surveylist.class);
-        startActivity(intent);
-
-        SharedPreferences preferences = getSharedPreferences("PREFS", MODE_PRIVATE);
-        preferences.edit().clear().commit();
-    }
-
-    public void loginPressed(View view) {
-        Intent intent = new Intent(getApplicationContext(), Login.class);
-        startActivity(intent);
-    }
-
-    public void registerPressed(View view) {
-        Intent intent = new Intent(getApplicationContext(), Register.class);
-        startActivity(intent);
-    }
 }
