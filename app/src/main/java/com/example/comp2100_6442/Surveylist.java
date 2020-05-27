@@ -43,4 +43,9 @@ public class Surveylist extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("PREFS", MODE_PRIVATE);
         preferences.edit().clear().commit();
     }
+    public void ResultsPressed (View view)
+    {
+        Intent intent = new Intent(getApplicationContext(), ViewResultsNEW.class);
+        startActivity(intent);
+    }
 }
