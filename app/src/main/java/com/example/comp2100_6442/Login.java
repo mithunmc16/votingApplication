@@ -69,7 +69,7 @@ public class Login extends AppCompatActivity {
         edit.putString("show", loginInfo);
         edit.commit();
 
-        Intent surveryList = new Intent(getApplicationContext(), Surveylist.class);
+        Intent surveryList = new Intent(getApplicationContext(), StartSurvey.class);
         startActivity(surveryList);
 
 

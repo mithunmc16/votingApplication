@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void guestPressed(View view) {
-        Intent intent = new Intent(getApplicationContext(), Surveylist.class);
+        Intent intent = new Intent(getApplicationContext(), StartSurvey.class);
         startActivity(intent);
 
         SharedPreferences preferences = getSharedPreferences("PREFS", MODE_PRIVATE);
