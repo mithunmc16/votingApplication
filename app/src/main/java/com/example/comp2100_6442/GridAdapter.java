@@ -1,5 +1,6 @@
 package com.example.comp2100_6442;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,7 @@ public class GridAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, final ViewGroup parent) {
         View view;
         if(convertView == null){
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.set_item,parent,false);
@@ -37,6 +38,13 @@ public class GridAdapter extends BaseAdapter {
         else{
             view = convertView;
         }
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent questionIntent = new Intent(parent.getContext(),QuestionsActivity.class);
+                parent.getContext().startActivity(questionIntent);
+            }
+        });
         ((TextView)view.findViewById(R.id.textview)).setText(String.valueOf(position+1));
         return view;
     }

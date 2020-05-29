@@ -1,26 +1,40 @@
 package com.example.comp2100_6442;
 
 public class TypeModel {
-    private String imageUrl,title;
-
-    public TypeModel(String imageUrl, String title) {
-        this.imageUrl = imageUrl;
-        this.title = title;
+    private String name;
+    private int sets;
+    private String url;
+    
+public TypeModel(){
+    //for firebase
+}
+    public TypeModel(String name, int sets, String url) {
+        this.name = name;
+        this.sets = sets;
+        this.url = url;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getName() {
+        return name;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getTitle() {
-        return title;
+    public int getSets() {
+        return sets;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setSets(int sets) {
+        this.sets = sets;
+    }
+
+    public String geturl() {
+        return url;
+    }
+
+    public void seturl(String url) {
+        this.url = url;
     }
 }

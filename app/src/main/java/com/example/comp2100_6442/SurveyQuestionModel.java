@@ -3,12 +3,12 @@ package com.example.comp2100_6442;
 public class SurveyQuestionModel {
     private String question, optionA, optionB, optionC, optionD;
 
-    public SurveyQuestionModel(String question, String optionA, String optionB, String optionC, String oprionD) {
+    public SurveyQuestionModel(String question, String optionA, String optionB, String optionC, String optionD) {
         this.question = question;
         this.optionA = optionA;
         this.optionB = optionB;
         this.optionC = optionC;
-        this.optionD = oprionD;
+        this.optionD = optionD;
     }
 
     public String getQuestion() {
@@ -47,7 +47,7 @@ public class SurveyQuestionModel {
         return optionD;
     }
 
-    public void setOprionD(String optionD) {
+    public void setOptionD(String optionD) {
         this.optionD = optionD;
     }
 }

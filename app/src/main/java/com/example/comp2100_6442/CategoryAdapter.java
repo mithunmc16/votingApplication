@@ -31,7 +31,7 @@ private List<TypeModel> typeModelList;
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.setData(typeModelList.get(position).getImageUrl(),typeModelList.get(position).getTitle());
+        holder.setData(typeModelList.get(position).geturl(),typeModelList.get(position).getName());
     }
 
     @Override

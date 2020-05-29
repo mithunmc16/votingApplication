@@ -27,7 +27,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TypeOfSurvey extends AppCompatActivity {
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference();
+
 private RecyclerView recyclerView;
+private List<TypeModel> list;
    protected  void onCreate(Bundle savedInstanceState){
        super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_type_of_survey);
@@ -41,14 +45,27 @@ private RecyclerView recyclerView;
        layoutManager.setOrientation(RecyclerView.VERTICAL);
        recyclerView.setLayoutManager(layoutManager);
 
-       List<TypeModel> list = new ArrayList<>();
-       list.add(new TypeModel( "" , "Title"));
-       list.add(new TypeModel( "" , "Title"));
+        list = new ArrayList<>();
 
 
 
-       CategoryAdapter adapter = new CategoryAdapter(list);
+       final CategoryAdapter adapter = new CategoryAdapter(list);
        recyclerView.setAdapter(adapter);
+
+       myRef.child("Types").addListenerForSingleValueEvent(new ValueEventListener() {
+           @Override
+           public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+              for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
+                  list.add(dataSnapshot1.getValue(TypeModel.class));
+              }
+              adapter.notifyDataSetChanged();
+           }
+
+           @Override
+           public void onCancelled(@NonNull DatabaseError databaseError) {
+               Toast.makeText(TypeOfSurvey.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+           }
+       });
    }
 
     @Override
