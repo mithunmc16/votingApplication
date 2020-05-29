@@ -25,17 +25,20 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         this.setTitle("REGISTER");
 
+        // Variable IDs for Registration & Shared Preferences Purposes
         username = findViewById(R.id.usernameInput2);
         email = findViewById(R.id.emailInput);
         password = findViewById(R.id.passwordInput2);
         register = findViewById(R.id.btnRegister2);
 
+        // Text Listener
         username.addTextChangedListener(registerTextWatcher);
         email.addTextChangedListener(registerTextWatcher);
         password.addTextChangedListener((registerTextWatcher));
 
     }
 
+    // Disabling the register button when the fields are not filled
     private TextWatcher registerTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -69,13 +72,15 @@ public class Register extends AppCompatActivity {
     };
 
 
-
+    // Register Button
     public void register2Pressed(View view) {
+        // Shared Preferences to save key value data
         SharedPreferences preferences = getSharedPreferences("PREFS", MODE_PRIVATE);
         String createUsername = username.getText().toString();
         String createEmail = email.getText().toString();
         String createPassword = password.getText().toString();
 
+        // Saving User's username and password
         SharedPreferences.Editor editPref = preferences.edit();
         editPref.putString(createUsername + createPassword + "data", "Welcome " + createUsername);
         editPref.commit();
@@ -83,7 +88,7 @@ public class Register extends AppCompatActivity {
         Intent sendtoLogin = new Intent(getApplicationContext(), Login.class);
         startActivity(sendtoLogin);
 
-
+        // Toasts to see if registration is a success or not
         if((username.toString().trim().length() > 1 && email.toString().trim().length() > 1 && password.toString().trim().length() > 1)) {
             Toast.makeText(Register.this, "Register Successful", Toast.LENGTH_SHORT).show();
         }

@@ -31,10 +31,10 @@ public class Login extends AppCompatActivity {
         logPass.addTextChangedListener(loginTextWatcher);
     }
 
+    // Disabling the login button when the fields are not filled
     private TextWatcher loginTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
         }
 
         @Override
@@ -54,7 +54,6 @@ public class Login extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable s) {
-
         }
     };
 
@@ -64,6 +63,7 @@ public class Login extends AppCompatActivity {
 
         SharedPreferences preferences = getSharedPreferences("PREFS", MODE_PRIVATE);
 
+        // Get key-data from shared preferences
         String loginInfo = preferences.getString(logInUser + logInPass + "data", "Wrong Username or Email");
         SharedPreferences.Editor edit = preferences.edit();
         edit.putString("show", loginInfo);
