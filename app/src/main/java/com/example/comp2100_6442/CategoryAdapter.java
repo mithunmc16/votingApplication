@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
+// Adapter class for Type of Surver/Voting 
 public class  CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 private List<TypeModel> typeModelList;
 
