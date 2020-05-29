@@ -87,10 +87,12 @@ public class QuestionsActivity extends AppCompatActivity {
                             nextBtn.setAlpha(0.6f);
                             enableoption(true);
                             pos++;
-                            if(pos == list.size()){
-                                Intent finalq = new Intent(QuestionsActivity.this, EndPage.class);
-                                startActivity(finalq);
-                                return;
+                            if(pos == list.size()) {
+                                {
+                                    Intent finalq = new Intent(QuestionsActivity.this, EndPage.class);
+                                    startActivity(finalq);
+                                    return;
+                                }
                             }
                             count = 0;
                             playAnimation(question,0,list.get(pos).getQuestion());
