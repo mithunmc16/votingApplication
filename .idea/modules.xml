@@ -6,6 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="COMP6442/app" />
       <module fileurl="file://$PROJECT_DIR$/comp2100_6442-sample-project2-COMP6442.iml" filepath="$PROJECT_DIR$/comp2100_6442-sample-project2-COMP6442.iml" group="COMP6442" />
       <module fileurl="file://$PROJECT_DIR$/app/comp2100_6442-sample-project2-app.iml" filepath="$PROJECT_DIR$/app/comp2100_6442-sample-project2-app.iml" group="COMP6442/app" />
+      <module fileurl="file://$PROJECT_DIR$/comp2100_6442-sample-project_1-COMP6442.iml" filepath="$PROJECT_DIR$/comp2100_6442-sample-project_1-COMP6442.iml" group="COMP6442" />
+      <module fileurl="file://$PROJECT_DIR$/app/comp2100_6442-sample-project_1-app.iml" filepath="$PROJECT_DIR$/app/comp2100_6442-sample-project_1-app.iml" group="COMP6442/app" />
     </modules>
   </component>
 </project>

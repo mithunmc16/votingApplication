@@ -11,11 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+
+//Tis class id dedicated for the activity of Logging in of a particular user with ID and Password
+
+
 public class Login extends AppCompatActivity {
 
-    EditText logUser;
-    EditText logPass;
-    Button btnLogin;
+    EditText logUser;//UserName
+    EditText logPass;//Password Specific to the User
+    Button btnLogin;// Button for login
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +51,7 @@ public class Login extends AppCompatActivity {
             if(logUser.length() == 0) {
                 logUser.setError("Please enter username");
             }
-            else if(logPass.length() == 0) {
+            else if(logPass.length() == 0) { //checking for password length
                 logPass.setError("Please enter password");
             }
         }
