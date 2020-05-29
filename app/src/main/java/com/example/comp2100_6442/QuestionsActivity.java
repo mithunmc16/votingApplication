@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.animation.Animator;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -87,6 +88,8 @@ public class QuestionsActivity extends AppCompatActivity {
                             enableoption(true);
                             pos++;
                             if(pos == list.size()){
+                                Intent finalq = new Intent(QuestionsActivity.this, EndPage.class);
+                                startActivity(finalq);
                                 return;
                             }
                             count = 0;
