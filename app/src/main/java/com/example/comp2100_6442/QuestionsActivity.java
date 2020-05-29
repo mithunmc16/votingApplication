@@ -28,6 +28,9 @@ import java.util.List;
 public class QuestionsActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
+
+    FirebaseDatabase rootnode;
+    DatabaseReference reference;
     private TextView question,noIndicator;
     private LinearLayout optionsContainer;
     private Button shareBtn, nextBtn;
@@ -36,6 +39,7 @@ public class QuestionsActivity extends AppCompatActivity {
     private int pos = 0;
     private String category;
     private int setNo;
+    //private int optA,optB,optC,optD ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +62,7 @@ public class QuestionsActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     checkoption(((Button)v));
+
                 }
             });
         }
@@ -124,10 +129,13 @@ public class QuestionsActivity extends AppCompatActivity {
                     if(count == 0) {
                         option = list.get(pos).getOptionA();
 
+
                     }else if(count == 1){
                         option = list.get(pos).getOptionB();
+
                     }else if(count == 2){
                         option = list.get(pos).getOptionC();
+
                     }
                     else if(count == 3){
                         option = list.get(pos).getOptionD();

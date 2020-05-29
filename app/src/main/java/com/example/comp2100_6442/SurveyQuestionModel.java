@@ -2,6 +2,7 @@ package com.example.comp2100_6442;
 
 public class SurveyQuestionModel {
     private String question, optionA, optionB, optionC, optionD;
+    //private int optA,optB,optC,optD;
     private int setno;
     public SurveyQuestionModel(){
         //for firebase
@@ -32,6 +33,7 @@ public class SurveyQuestionModel {
 
     public void setOptionA(String optionA) {
         this.optionA = optionA;
+        //optA++;
     }
 
     public String getOptionB() {
@@ -40,6 +42,7 @@ public class SurveyQuestionModel {
 
     public void setOptionB(String optionB) {
         this.optionB = optionB;
+//        optB++;
     }
 
     public String getOptionC() {
@@ -48,14 +51,17 @@ public class SurveyQuestionModel {
 
     public void setOptionC(String optionC) {
         this.optionC = optionC;
+//        optC++;
     }
 
     public String getOptionD() {
         return optionD;
+
     }
 
     public void setOptionD(String optionD) {
         this.optionD = optionD;
+//        optD++;
     }
     public int getSetno() {
         return setno;
