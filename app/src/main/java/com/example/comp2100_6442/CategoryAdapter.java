@@ -15,7 +15,7 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
+public class  CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 private List<TypeModel> typeModelList;
 
     public CategoryAdapter(List<TypeModel> typeofsurveylist) {
@@ -50,14 +50,15 @@ private List<TypeModel> typeModelList;
             title = itemView.findViewById(R.id.title);
 
         }
-        private void setData(String url, String title){
+        private void setData(String url, final String title){
             Glide.with(itemView.getContext()).load(url).into(imageview);
             this.title.setText(title);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent questionIntent = new Intent(itemView.getContext(), QuestionsActivity.class);
-                    itemView.getContext().startActivity(questionIntent);
+                    Intent setINtent = new Intent(itemView.getContext(), SetActivity.class);
+                    setINtent.putExtra("title", title);
+                    itemView.getContext().startActivity(setINtent);
                 }
             });
         }

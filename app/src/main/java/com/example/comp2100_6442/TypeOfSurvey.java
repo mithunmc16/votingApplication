@@ -27,51 +27,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TypeOfSurvey extends AppCompatActivity {
-
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference();
 private RecyclerView recyclerView;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+   protected  void onCreate(Bundle savedInstanceState){
        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_type_of_survey);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Types");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       setContentView(R.layout.activity_type_of_survey);
+       Toolbar toolbar = findViewById(R.id.toolbar);
+       setSupportActionBar(toolbar);
+       getSupportActionBar().setTitle("Categories");
+
+       recyclerView = findViewById(R.id.rview);
+       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+       layoutManager.setOrientation(RecyclerView.VERTICAL);
+       recyclerView.setLayoutManager(layoutManager);
+
+       List<TypeModel> list = new ArrayList<>();
+       list.add(new TypeModel( "" , "Title"));
+       list.add(new TypeModel( "" , "Title"));
 
 
-        recyclerView  = findViewById(R.id.rview);
-        LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
-        layoutmanager.setOrientation(RecyclerView.VERTICAL);
-        recyclerView.setLayoutManager(layoutmanager);
-        List<TypeModel> list = new ArrayList<>();
-        list.add(new TypeModel("", "MCQ"));
-        list.add(new TypeModel("", "MCQ"));
-        list.add(new TypeModel("", "MCQ"));
 
-    CategoryAdapter adapter = new CategoryAdapter(list);
-    recyclerView.setAdapter(adapter);
-
-        myRef.child("Type").child("Voting Type1").child("name").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Toast.makeText(TypeOfSurvey.this, dataSnapshot.getValue().toString(), Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        }
+       CategoryAdapter adapter = new CategoryAdapter(list);
+       recyclerView.setAdapter(adapter);
+   }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == android.R.id.home){
-            finish();
-        }
+       if(item.getItemId()== android.R.id.home){
+           finish();
+       }
         return super.onOptionsItemSelected(item);
     }
 }
