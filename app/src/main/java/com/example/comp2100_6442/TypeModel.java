@@ -4,7 +4,7 @@ public class TypeModel {
     private String name;
     private int sets;
     private String url;
-    
+
 public TypeModel(){
     //for firebase
 }

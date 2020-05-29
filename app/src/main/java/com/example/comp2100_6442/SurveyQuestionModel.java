@@ -2,13 +2,20 @@ package com.example.comp2100_6442;
 
 public class SurveyQuestionModel {
     private String question, optionA, optionB, optionC, optionD;
+    private int setno;
+    public SurveyQuestionModel(){
+        //for firebase
+    }
 
-    public SurveyQuestionModel(String question, String optionA, String optionB, String optionC, String optionD) {
+
+
+    public SurveyQuestionModel(String question, String optionA, String optionB, String optionC, String optionD, int setno) {
         this.question = question;
         this.optionA = optionA;
         this.optionB = optionB;
         this.optionC = optionC;
         this.optionD = optionD;
+        this.setno = setno;
     }
 
     public String getQuestion() {
@@ -49,5 +56,12 @@ public class SurveyQuestionModel {
 
     public void setOptionD(String optionD) {
         this.optionD = optionD;
+    }
+    public int getSetno() {
+        return setno;
+    }
+
+    public void setSetno(int setno) {
+        this.setno = setno;
     }
 }

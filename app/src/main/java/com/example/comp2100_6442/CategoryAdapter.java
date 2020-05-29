@@ -31,7 +31,7 @@ private List<TypeModel> typeModelList;
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.setData(typeModelList.get(position).geturl(),typeModelList.get(position).getName());
+        holder.setData(typeModelList.get(position).geturl(),typeModelList.get(position).getName(),typeModelList.get(position).getSets());
     }
 
     @Override
@@ -50,7 +50,7 @@ private List<TypeModel> typeModelList;
             title = itemView.findViewById(R.id.title);
 
         }
-        private void setData(String url, final String title){
+        private void setData(String url, final String title, final int sets){
             Glide.with(itemView.getContext()).load(url).into(imageview);
             this.title.setText(title);
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +58,7 @@ private List<TypeModel> typeModelList;
                 public void onClick(View v) {
                     Intent setINtent = new Intent(itemView.getContext(), SetActivity.class);
                     setINtent.putExtra("title", title);
+                    setINtent.putExtra("sets",sets);
                     itemView.getContext().startActivity(setINtent);
                 }
             });

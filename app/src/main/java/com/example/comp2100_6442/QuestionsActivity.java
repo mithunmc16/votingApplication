@@ -1,5 +1,6 @@
 package com.example.comp2100_6442;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -12,18 +13,28 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionsActivity extends AppCompatActivity {
-
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference();
     private TextView question,noIndicator;
     private LinearLayout optionsContainer;
     private Button shareBtn, nextBtn;
     private int count = 0;
     private List<SurveyQuestionModel> list;
     private int pos = 0;
+    private String category;
+    private int setNo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,13 +48,9 @@ public class QuestionsActivity extends AppCompatActivity {
         optionsContainer = findViewById(R.id.options_container);
         shareBtn = findViewById(R.id.sharebtn);
         nextBtn = findViewById(R.id.nextbtn);
+        category = getIntent().getStringExtra("category");
+        setNo = getIntent().getIntExtra("setno",1);
 
-        list = new ArrayList<>();
-        list.add(new SurveyQuestionModel("question1","option A", "Option B", "Option C", "Option D" ));
-        list.add(new SurveyQuestionModel("question2","option A", "Option A", "Option A", "Option A" ));
-        list.add(new SurveyQuestionModel("question3","option C", "Option C", "Option C", "Option C" ));
-        list.add(new SurveyQuestionModel("question4","option D", "Option D", "Option D", "Option D" ));
-        list.add(new SurveyQuestionModel("question5","option D", "Option B", "Option C", "Option A" ));
 
         for(int i = 0; i<4; i++){
             optionsContainer.getChildAt(i).setOnClickListener(new View.OnClickListener() {
@@ -53,22 +60,53 @@ public class QuestionsActivity extends AppCompatActivity {
                 }
             });
         }
-
-        playAnimation(question, 0, list.get(pos).getQuestion());
-        nextBtn.setOnClickListener(new View.OnClickListener() {
+        list = new ArrayList<>();
+        myRef.child("SETS").child(category).child("questions").orderByChild("Setno").equalTo(setNo).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                nextBtn.setEnabled(false);
-                nextBtn.setAlpha(0.6f);
-                enableoption(true);
-                pos++;
-                if(pos == list.size()){
-                    return;
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    list.add(snapshot.getValue(SurveyQuestionModel.class));
                 }
-                count = 0;
-                playAnimation(question,0,list.get(pos).getQuestion());
+                if(list.size()>0){
+
+                    for(int i = 0; i<4; i++){
+                        optionsContainer.getChildAt(i).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                checkoption(((Button)v));
+                            }
+                        });
+
+                    }
+                    playAnimation(question, 0, list.get(pos).getQuestion());
+                    nextBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            nextBtn.setEnabled(false);
+                            nextBtn.setAlpha(0.6f);
+                            enableoption(true);
+                            pos++;
+                            if(pos == list.size()){
+                                return;
+                            }
+                            count = 0;
+                            playAnimation(question,0,list.get(pos).getQuestion());
+                        }
+                    });
+                }
+                else{
+                    finish();
+                    Toast.makeText(QuestionsActivity.this, "no questions", Toast.LENGTH_SHORT).show();
+                }
             }
+
+            @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(QuestionsActivity.this,databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                }
         });
+
+
 
     }
     private void playAnimation(final View view, final int value, final String data){
